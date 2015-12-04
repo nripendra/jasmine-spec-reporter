@@ -75,6 +75,8 @@ SpecReporter.prototype = {
     this.metrics.stop();
     this.display.summary(this.metrics);
     this.finished = true;
+    if(this.options.jasmineDone && this.options.jasmineDone.call)
+      this.options.jasmineDone(this.metrics.failedSpecs);
   },
 
   suiteStarted: function (suite) {
