@@ -14,7 +14,7 @@ var SpecDisplay = function (options, displayProcessors) {
   this.displayWithoutColors = options.colors === false;
   this.hasCustomDisplaySpecStarted = options.hasCustomDisplaySpecStarted;
   this.displayProcessors = displayProcessors;
-  this.consoleWrite = options.consoleWriter || console.log;
+  this.consoleWrite = options.consoleWrite || console.log;
 
   var displayStacktrace = options.displayStacktrace || 'none';
   this.displaySpecsWithStacktrace = displayStacktrace === 'all' || displayStacktrace === 'specs';
