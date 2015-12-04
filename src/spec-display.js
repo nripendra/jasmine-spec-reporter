@@ -14,6 +14,7 @@ var SpecDisplay = function (options, displayProcessors) {
   this.displayWithoutColors = options.colors === false;
   this.hasCustomDisplaySpecStarted = options.hasCustomDisplaySpecStarted;
   this.displayProcessors = displayProcessors;
+  this.consoleWrite = options.consoleWriter || console.log;
 
   var displayStacktrace = options.displayStacktrace || 'none';
   this.displaySpecsWithStacktrace = displayStacktrace === 'all' || displayStacktrace === 'specs';
@@ -206,14 +207,14 @@ SpecDisplay.prototype = {
       if (this.displayWithoutColors) {
         stuff = stuff.stripColors;
       }
-      console.log(this.currentIndent + stuff);
+      this.consoleWrite(this.currentIndent + stuff);
       this.lastWasNewLine = false;
     }
   },
 
   newLine: function () {
     if (!this.lastWasNewLine) {
-      console.log('');
+      this.consoleWrite('');
       this.lastWasNewLine = true;
     }
   },
